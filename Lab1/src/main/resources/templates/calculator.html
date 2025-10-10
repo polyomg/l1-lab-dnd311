@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form method="post">
+        <input type="text" name="length" required/><br/>
+        <input type="text" name="width" required/><br/>
+        <button type="submit" formaction="http://localhost:8080/calculator/perimeter">Perimeter</button>
+        <button type="submit" formaction="http://localhost:8080/calculator/area">Area</button>
+        <br/>
+        <label>Result:</label><input type="text" th:value="${result}">
+    </form>
+</body>
+</html>

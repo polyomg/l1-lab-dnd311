@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="view(title, content)">
+<head>
+    <meta charset="UTF-8">
+    <title th:replace="${title}">Bai 5 - Layout</title>
+</head>
+<body>
+    <header>
+        <h1 th:text="#{layout.header}">Layout Header</h1>
+    </header>
+    <nav th:replace="~{fragments/bai5-menu}">
+        Layout Menu
+    </nav>
+
+    <article th:replace="${content}">
+        Layout Content
+    </article>
+
+    <footer>
+        <hr>
+        <h3 th:utext="#{layout.footer}"></h3>
+    </footer>
+</body>
+</html>

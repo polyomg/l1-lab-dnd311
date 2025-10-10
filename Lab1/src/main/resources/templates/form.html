@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1 th:text="${message}"/>
+    <form action="http://localhost:8080/login/check" method="post">
+        <input type="text" name="username" placeholder="Enter username"/>
+        <input type="password" name="password" placeholder="Enter pasword"/>
+        <button type="submit">Login</button>
+    </form>
+</body>
+</html>
