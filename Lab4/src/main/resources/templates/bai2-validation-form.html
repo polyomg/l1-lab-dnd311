@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 2 Validation Form</title>
+    <style>
+        i{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <i th:text="${message}"></i>
+    <form th:action="@{/bai2/form/validation}" method="post" th:object="${bai2Staff}" enctype="multipart/form-data">
+
+        <label>Email:</label>
+        <input type="text" th:field="*{id}">
+        <i th:errors="*{id}"></i>
+        <hr>
+
+        <label>Họ và tên:</label>
+        <input type="text" th:field="*{fullname}">
+        <i th:errors="*{fullname}"></i>
+        <hr>
+
+        <label>Giới tính:</label>
+        <input type="radio" th:field="*{gender}" value="true"> Nam
+        <input type="radio" th:field="*{gender}" value="false"> Nữ
+        <i th:errors="*{gender}"></i>
+        <hr>
+
+        <label>Ngày sinh:</label>
+        <input type="text" name="birthday" th:value="*{#dates.format(birthday, 'MM/dd/yyyy')}">
+        <i th:errors="*{birthday}"></i>
+        <hr>
+
+        <label>Hình ảnh:</label>
+        <input type="hidden" th:field="*{photo}">
+        <input type="file" name="photo_file">
+        <hr>
+
+        <label>Cấp bậc</label>
+        <select th:field="*{level}">
+            <option value="0">Úy</option>
+            <option value="1">Tá</option>
+            <option value="2">Tướng</option>
+        </select>
+        <hr>
+
+        <label>Salary:</label>
+        <input type="text" th:field="*{salary}">
+        <i th:errors="*{salary}"></i>
+        <hr>
+
+        <button type="submit">Validate</button>
+
+    </form>
+
+
+
+</body>
+</html>

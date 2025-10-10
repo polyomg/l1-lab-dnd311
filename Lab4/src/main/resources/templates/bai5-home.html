@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/bai5-layout :: view(~{::title}, ~{::content})}">
+<head>
+    <meta charset="UTF-8">
+    <title th:fragment="title">Home</title>
+</head>
+<body>
+    <article th:fragment="content">
+        <h1 th:text="#{home.content.h1}">Home Content</h1>
+        <img th:src="@{/images/lab4.jpg}" alt="lab4.jpg">
+    </article>
+</body>
+</html>
