@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1 th:text="${message}"></h1>
+    <form th:action="@{/account/register}" method="post" enctype="multipart/form-data">
+        <label>Username:</label>
+        <input type="text" name="username">
+        <br>
+        <label>Password:</label>
+        <input type="password" name="password">
+        <br>
+        <label>Email:</label>
+        <input type="email" name="email">
+        <br>
+        <label>Avatar: </label>
+        <input type="file" name="avatar">
+        <br>
+        <button type="submit">Login</button>
+    </form>
+    <div th:if="${imgPath != null}">
+        <h2 th:text="'Username: ' + ${username}"></h2>
+        <h2 th:text="'Email: ' + ${email}"></h2>
+        <img th:src="@{${imgPath}}" alt="avatar" width="150">
+    </div>
+</body>
+</html>
