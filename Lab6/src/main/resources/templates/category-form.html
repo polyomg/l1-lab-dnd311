@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Category Form</title>
+</head>
+<body>
+    <h1>CATEGORY MANAGEMENT</h1>
+
+    <form th:object="${c}" id="crud-form">
+        <input type="text" th:field="*{id}" placeholder="Category Id?">
+        <input type="text" th:field="*{name}" placeholder="Category Name?">
+    </form>
+    <hr>
+    <button type="submit" form="crud-form" th:formaction="@{/create}" th:formmethod="post" th:if="${c.id == null}">Create</button>
+    <button type="submit" form="crud-form" th:formaction="@{/update/{id}(id = ${c.id})}" th:formmethod="post" th:if="${c.id != null}">Update</button>
+    <a th:href="@{/delete/{id}(id=${c.id})}" th:if="${c.id != null}">Delete</a>
+    <a th:href="@{/form}">Reset</a>
+    <hr>
+
+    <table border="1" style="width: 100%">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="c : ${cl}">
+                <td th:text="${c.id}"></td>
+                <td th:text="${c.name}"></td>
+                <td>
+                    <a th:href="@{/edit/{id}(id=${c.id})}">Edit</a>
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+
+
+
+
+
+</body>
+</html>
