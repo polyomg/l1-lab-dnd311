@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Account Management</title>
+</head>
+<body>
+    <h1>ACCOUNT MANAGEMENT</h1>
+    <form th:object="${account}">
+        <input type="text" placeholder="Username?" th:field="*{username}">
+        <br>
+        <input type="password" placeholder="Password?" th:field="*{password}">
+        <br>
+        <input type="text" placeholder="Fullname?" th:field="*{fullname}">
+        <br>
+        <input type="email" placeholder="Email?" th:field="*{email}">
+        <br>
+        <input type="text" placeholder="Photo?" th:field="*{photo}">
+        <br>
+        <label>Activated?</label>
+        <input type="radio" th:field="*{activated}" th:value="true">Yes</input>
+        <input type="radio" th:field="*{activated}" th:value="false">No</input>
+        <br>
+        <label>Admin?</label>
+        <input type="radio" th:field="*{admin}" th:value="true">Yes</input>
+        <input type="radio" th:field="*{admin}" th:value="false">No</input>
+        <br>
+        <button th:if="${account.username == null}" type="submit" th:formaction="@{/account/create}" formmethod="post">Create</button>
+        <button th:if="${account.username != null}" type="submit" th:formaction="@{/account/update/{username}(username=${account.username})}" formmethod="post">Update</button>
+        <a th:if="${account.username != null}" th:href="@{/account/delete/{username}(username=${account.username})}">Delete</a>
+        <a th:href="@{/account/form}">Reset</a>
+    </form>
+
+    <table border="1" style="width: 100%">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Password</th>
+                <th>Fullname</th>
+                <th>Email</th>
+                <th>Photo</th>
+                <th>Activated</th>
+                <th>Admin</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="a : ${accountList}">
+                <td th:text="${a.username}"></td>
+                <td th:text="${a.password}"></td>
+                <td th:text="${a.fullname}"></td>
+                <td th:text="${a.email}"></td>
+                <td th:text="${a.photo}"></td>
+                <td th:text="${a.activated} == true ? 'Yes' : 'No' "></td>
+                <td th:text="${a.admin} == true ? 'Yes' : 'No' "></td>
+                <td>
+                    <a th:href="@{/account/edit/{username}(username=${a.username})}">Edit</a>
+                </td>
+
+
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>

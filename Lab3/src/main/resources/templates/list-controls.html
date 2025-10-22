@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h2>Fill to SelectBox</h2>
+    <select name="cbo">
+        <th:block th:each="item : ${items}">
+            <option th:value="${item.id}" th:text="${item.fullname}"></option>
+        </th:block>
+    </select>
+    <h2>Create Radio Button Group</h2>
+    <label th:each="item, status : ${items}">
+        <input type="radio" name="rdo" th:value="${item.id}">
+        <th:block th:text="${item.fullname}"></th:block>
+        <th:block th:if="${!status.last}"><br></th:block>
+    </label>
+</body>
+</html>

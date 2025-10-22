@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/bai5-layout :: view(~{::title}, ~{::content})}">
+<head>
+    <meta charset="UTF-8">
+    <title th:fragment="title">About</title>
+</head>
+<body>
+    <article th:fragment="content">
+        <h1 th:text="#{about.content.h1}">About content</h1>
+        <ul>
+            <li>FPT Polytechnic</li>
+            <li>Thực học - Thực nghiệp</li>
+        </ul>
+    </article>
+</body>
+</html>

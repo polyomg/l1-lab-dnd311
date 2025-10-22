@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <th:block th:object="${staff}">
+        <img th:src="@{|/images/*{photo}|}"/>
+        <br>
+        <hr>
+        <label>Email: <b>[[*{id}]]</b> </label>
+        <br>
+        <hr>
+        <label>Họ và tên: <b th:text="*{#strings.capitalizeWords(fullname)}"></b></label>
+        <br>
+        <hr>
+        <label>Giới tính: <b th:text="*{gender} ? 'Nam' : 'Nữ' "></b></label>
+        <br>
+        <hr>
+        <label>Ngày sinh: <b th:text="*{#dates.format(birthday, 'dd-MM-yyyy')}"></b></label>
+        <br>
+        <hr>
+        <label>Cấp bậc:
+            <th:block th:switch="*{level}">
+                <b th:case="0">Úy</b>
+                <b th:case="1">Tá</b>
+                <b th:case="2">Tướng</b>
+                <b th:case="*">Chưa có</b>
+            </th:block>
+        </label>
+        <br>
+        <hr>
+        <label>Salary: $<b th:text="*{#numbers.formatDecimal(salary, 0, 'COMMA',2, 'POINT')}"></b></label>
+        <br>
+        <hr>
+    </th:block>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <i th:text="${message}"></i>
+    <form th:action="@{/staff/create/save}" method="post" enctype="multipart/form-data" th:object="${staff}">
+
+        <label>Email:</label>
+        <input type="text" th:field="*{id}">
+        <hr>
+
+        <label>Họ và tên:</label>
+        <input type="text" th:field="*{fullname}">
+        <hr>
+
+        <label>Giới tính:</label>
+        <input type="radio" th:field="*{gender}" value="true">Nam
+        <input type="radio" th:field="*{gender}" value="false">Nữ
+        <hr>
+
+        <label>Ngày sinh:</label>
+        <input type="text" name="birthday" th:value="*{#dates.format(birthday, 'MM/dd/yyyy')}">
+        <hr>
+
+        <label>Hình ảnh:</label>
+        <input type="hidden" th:field="*{photo}">
+        <input type="file" name="photo_file">
+        <hr>
+
+        <label>Cấp bậc:</label>
+        <select th:field="*{level}">
+            <option value="0">Úy</option>
+            <option value="1">Tá</option>
+            <option value="2">Tướng</option>
+        </select>
+        <hr>
+
+        <label>Salary:</label>
+        <input th:field="*{salary}">
+        <hr>
+
+        <button type="submit">Create</button>
+
+    </form>
+</body>
+</html>
