@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>TỒN KHO THEO LOẠI</h1>
+    <table border="1" style="width: 100%">
+        <thead>
+            <tr>
+                <th>Loại hàng</th>
+                <th>Tổng giá</th>
+                <th>Số sản phẩm</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="il : ${inventoryList}">
+                <td th:text="${il.categoryName}"></td>
+                <td th:text="${il.totalPrices}"></td>
+                <td th:text="${il.numberOfProducts}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

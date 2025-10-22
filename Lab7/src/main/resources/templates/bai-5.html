@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>SEARCH & PAGE</h1>
+<form th:action="@{/bai5}" method="post">
+    <input type="text" name="productName" th:value="${productName}">
+    <input type="hidden" name="pageNumberCurrent" th:value="${pageNumberCurrent}">
+    <button type="submit">Search</button>
+</form>
+
+<table border="1" style="width: 100%">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="p : ${productPage.content}">
+        <td th:text="${p.id}"></td>
+        <td th:text="${p.name}"></td>
+        <td th:text="${p.price}"></td>
+        <td th:text="${p.createDate}"></td>
+    </tr>
+    </tbody>
+</table>
+<a  th:if="${!productPage.isFirst}"
+    th:href="@{/bai5(   pageNumberCurrent = 0,
+                        productName=${productName})}">First</a>
+
+<a  th:if="${!productPage.isFirst}"
+    th:href="@{/bai5(   pageNumberCurrent = ${productPage.number - 1},
+                        productName=${productName})}">Previous</a>
+
+<a  th:if="${!productPage.isLast}"
+    th:href="@{/bai5(   pageNumberCurrent = ${productPage.number + 1},
+                        productName=${productName})}">Next</a>
+
+<a  th:if="${!productPage.isLast}"
+    th:href="@{/bai5(   pageNumberCurrent = ${productPage.totalPages - 1},
+                        productName=${productName})}">Last</a>
+
+<ul>
+    <li>
+        Số thực thể hiện tại:<i th:text="${productPage.numberOfElements}"></i>
+    </li>
+    <li>
+        Trang số:<i th:text="${productPage.number}"></i>
+    </li>
+    <li>
+        Kích thước trang:<i th:text="${productPage.size}"></i>
+    </li>
+    <li>
+        Tổng số thực thể:<i th:text="${productPage.totalElements}"></i>
+    </li>
+    <li>
+        Tổng số trang:<i th:text="${productPage.totalPages}"></i>
+    </li>
+</ul>
+
+</body>
+</html>
